@@ -7,6 +7,7 @@ finish-args:
   - --share=ipc
   - --socket=fallback-x11
   - --socket=wayland
+  - --filesystem=home
   - --device=dri
   - --talk-name=org.freedesktop.Notifications
 cleanup:
@@ -27,16 +28,16 @@ modules:
     sources:
       - type: git
         url: https://gitlab.com/cubocore/libcprime.git
-        tag: v4.2.0
+        tag: v4.4.1
   - name: poppler
     buildsystem: cmake-ninja
     config-opts:
-      - -DENABLE_TESTING=OFF
+      - -DENABLE_BOOST=OFF
       - -DCMAKE_INSTALL_LIBDIR=lib
     sources:
       - type: git
         url: https://gitlab.freedesktop.org/poppler/poppler
-        tag: poppler-21.04.0
+        tag: poppler-22.01.0
   - name: corepdf
     post-install:
       - install -Dp -m 644 org.cubocore.CorePDF.appdata.xml /app/share/appdata/org.cubocore.CorePDF.appdata.xml
@@ -50,4 +51,4 @@ modules:
         path: org.cubocore.CorePDF.appdata.xml
       - type: git
         url: https://gitlab.com/cubocore/coreapps/corepdf.git
-        tag: v4.2.0
+        tag: v4.4.0
