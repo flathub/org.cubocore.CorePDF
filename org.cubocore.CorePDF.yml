@@ -8,6 +8,7 @@ finish-args:
   - --socket=fallback-x11
   - --socket=wayland
   - --filesystem=home
+  - --filesystem=xdg-config
   - --device=dri
   - --talk-name=org.freedesktop.Notifications
 cleanup:
@@ -28,7 +29,7 @@ modules:
     sources:
       - type: git
         url: https://gitlab.com/cubocore/libcprime.git
-        tag: v4.4.1
+        tag: v4.5.0
   - name: poppler
     buildsystem: cmake-ninja
     config-opts:
@@ -51,4 +52,4 @@ modules:
         path: org.cubocore.CorePDF.appdata.xml
       - type: git
         url: https://gitlab.com/cubocore/coreapps/corepdf.git
-        tag: v4.4.0
+        tag: v4.5.0
