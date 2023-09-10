@@ -7,8 +7,7 @@ finish-args:
   - --share=ipc
   - --socket=fallback-x11
   - --socket=wayland
-  - --filesystem=home
-  - --filesystem=xdg-config:create
+  - --filesystem=home # Listing pdf documents and saving it in config folder
   - --device=dri
   - --talk-name=org.freedesktop.Notifications
 cleanup:
@@ -23,9 +22,6 @@ cleanup:
 modules:
   - name: libcprime
     buildsystem: cmake-ninja
-    config-opts:
-      - -DCMAKE_INSTALL_PREFIX=/app
-      - -DCMAKE_BUILD_TYPE=Release
     sources:
       - type: git
         url: https://gitlab.com/cubocore/libcprime.git
@@ -34,7 +30,6 @@ modules:
     buildsystem: cmake-ninja
     config-opts:
       - -DENABLE_BOOST=OFF
-      - -DCMAKE_INSTALL_LIBDIR=lib
     sources:
       - type: git
         url: https://gitlab.freedesktop.org/poppler/poppler
@@ -43,10 +38,6 @@ modules:
     post-install:
       - install -Dp -m 644 org.cubocore.CorePDF.appdata.xml /app/share/appdata/org.cubocore.CorePDF.appdata.xml
     buildsystem: cmake-ninja
-    config-opts:
-      - -DCMAKE_INSTALL_PREFIX=/app
-      - -DCMAKE_BUILD_TYPE=Release
-      - -DCMAKE_LIBRARY_PATH=/app/lib
     sources:
       - type: file
         path: org.cubocore.CorePDF.appdata.xml
