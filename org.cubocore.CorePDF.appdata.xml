@@ -5,21 +5,21 @@
     <id>org.cubocore.CorePDF</id>
     <metadata_license>CC0-1.0</metadata_license>
     <project_license>GPL-3.0</project_license>
-    
+
     <project_group>CuboCore</project_group>
     <developer_name>CuboCore Group</developer_name>
-    
+
     <launchable type="desktop-id">org.cubocore.CorePDF.desktop</launchable>
-    
+
     <name>CorePDF</name>
     <summary>A simple lightweight PDF viewer</summary>
-    
+
     <description>
         <p>
             CorePDF is a lightweight PDF app based on Qt Framework based on poppler.
         </p>
     </description>
-    
+
     <keywords>
       <keyword>CorePDF</keyword>
       <keyword>PDF Viewer</keyword>
@@ -39,18 +39,14 @@
     <url type="help">https://gitlab.com/cubocore/coreapps/corepdf/-/blob/master/README.md</url>
     <url type="bugtracker">https://gitlab.com/cubocore/coreapps/corepdf/-/issues</url>
     <url type="contact">https://app.element.io/#/room/#cubocore:matrix.org</url>
-    
+
     <releases>
         <release version="4.5.0" date="2023-08-27"/>
         <release version="4.4.0" date="2022-08-02"/>
 <!--        <release version="4.3.0" date="2021-12-25"/> !-->
     	<release version="4.2.0" date="2021-04-11"/>
     </releases>
-    
-    <provides>
-        <id>org.cubocore.CorePDF</id>
-    </provides>
-    
+
     <screenshots>
         <screenshot type="default">
             <caption>CorePDF</caption>
