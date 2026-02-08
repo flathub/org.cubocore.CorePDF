@@ -1,8 +1,11 @@
 app-id: org.cubocore.CorePDF
 runtime: org.kde.Platform
-runtime-version: '5.15-25.08'
+runtime-version: '6.10'
 sdk: org.kde.Sdk
 command: corepdf
+rename-desktop-file: cc.cubocore.CorePDF.desktop
+rename-icon: cc.cubocore.CorePDF
+rename-appdata-file: cc.cubocore.CorePDF.metainfo.xml
 finish-args:
   - --share=ipc
   - --socket=fallback-x11
@@ -22,26 +25,35 @@ cleanup:
 modules:
   - name: libcprime
     buildsystem: cmake-ninja
-    config-opts: ["-DCMAKE_POLICY_VERSION_MINIMUM=3.5"]
+    config-opts: [
+        "-DCMAKE_POLICY_VERSION_MINIMUM=3.5"
+    ]
     sources:
       - type: git
         url: https://gitlab.com/cubocore/libcprime.git
-        tag: v4.5.0
+        commit: 17d4c94f3be2c7f67dc757cf852f0144945c2c69
+        tag: v5.0.1
   - name: poppler
     buildsystem: cmake-ninja
     config-opts:
       - -DENABLE_BOOST=OFF
+      - -DENABLE_QT5=OFF
     sources:
       - type: git
         url: https://gitlab.freedesktop.org/poppler/poppler
-        tag: poppler-22.01.0
+        tag: poppler-25.12.0
+  - name: qdocumentview
+    buildsystem: meson
+    sources:
+      - type: git
+        url: https://gitlab.com/extraqt/qdocumentview
+        tag: v0.3.0.1
   - name: corepdf
-    post-install:
-      - install -Dp -m 644 org.cubocore.CorePDF.appdata.xml /app/share/appdata/org.cubocore.CorePDF.appdata.xml
     buildsystem: cmake-ninja
     sources:
-      - type: file
-        path: org.cubocore.CorePDF.appdata.xml
       - type: git
         url: https://gitlab.com/cubocore/coreapps/corepdf.git
-        tag: v4.5.0
+        commit: d7b263d5394d9b119bd3564b24b50f0bba513ba6
+        tag: v5.0.1
+      - type: patch
+        path: fix-appID-name.patch
